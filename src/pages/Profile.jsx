@@ -1,10 +1,15 @@
-import React from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { Navigate } from 'react-router-dom';
-import { User, Mail, Calendar, Settings, Activity, Zap } from 'lucide-react';
+import React from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { Navigate } from "react-router-dom";
+import { User, Mail, Calendar, Settings, Activity, Zap } from "lucide-react";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <LoadingSpinner message="Loading your workspace..." />;
+  }
 
   if (!user) {
     return <Navigate to="/login" replace />;
@@ -12,23 +17,23 @@ const Profile = () => {
 
   const stats = [
     {
-      label: 'Total Prompts',
-      value: '47',
+      label: "Total Prompts",
+      value: "47",
       icon: Activity,
-      color: 'text-blue-600 dark:text-blue-400'
+      color: "text-blue-600 dark:text-blue-400",
     },
     {
-      label: 'Files Processed',
-      value: '23',
+      label: "Files Processed",
+      value: "23",
       icon: Settings,
-      color: 'text-green-600 dark:text-green-400'
+      color: "text-green-600 dark:text-green-400",
     },
     {
-      label: 'Account Status',
-      value: 'Active',
+      label: "Account Status",
+      value: "Active",
       icon: Zap,
-      color: 'text-purple-600 dark:text-purple-400'
-    }
+      color: "text-purple-600 dark:text-purple-400",
+    },
   ];
 
   return (
@@ -71,32 +76,42 @@ const Profile = () => {
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                 Account Information
               </h3>
-              
+
               <div className="flex items-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                 <User className="w-6 h-6 text-purple-600 dark:text-purple-400 mr-4" />
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Full Name</p>
-                  <p className="text-lg font-medium text-gray-900 dark:text-white">{user.name}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Full Name
+                  </p>
+                  <p className="text-lg font-medium text-gray-900 dark:text-white">
+                    {user.name}
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                 <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400 mr-4" />
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Email Address</p>
-                  <p className="text-lg font-medium text-gray-900 dark:text-white">{user.email}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Email Address
+                  </p>
+                  <p className="text-lg font-medium text-gray-900 dark:text-white">
+                    {user.email}
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                 <Calendar className="w-6 h-6 text-green-600 dark:text-green-400 mr-4" />
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Member Since</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Member Since
+                  </p>
                   <p className="text-lg font-medium text-gray-900 dark:text-white">
-                    {new Date(user.joinDate).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
+                    {new Date(user.joinDate).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
                     })}
                   </p>
                 </div>
@@ -108,14 +123,21 @@ const Profile = () => {
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                 Usage Statistics
               </h3>
-              
+
               {stats.map((stat, index) => (
-                <div key={index} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl"
+                >
                   <div className="flex items-center">
                     <stat.icon className={`w-6 h-6 ${stat.color} mr-4`} />
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">{stat.label}</p>
+                    <p className="text-gray-700 dark:text-gray-300 font-medium">
+                      {stat.label}
+                    </p>
                   </div>
-                  <p className="text-xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
+                  <p className="text-xl font-bold text-gray-900 dark:text-white">
+                    {stat.value}
+                  </p>
                 </div>
               ))}
             </div>
@@ -141,12 +163,20 @@ const Profile = () => {
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
-              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Theme Preference</h4>
-              <p className="text-gray-600 dark:text-gray-400">Automatically synced with system preference</p>
+              <h4 className="font-medium text-gray-900 dark:text-white mb-2">
+                Theme Preference
+              </h4>
+              <p className="text-gray-600 dark:text-gray-400">
+                Automatically synced with system preference
+              </p>
             </div>
             <div className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
-              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Notifications</h4>
-              <p className="text-gray-600 dark:text-gray-400">Email notifications enabled</p>
+              <h4 className="font-medium text-gray-900 dark:text-white mb-2">
+                Notifications
+              </h4>
+              <p className="text-gray-600 dark:text-gray-400">
+                Email notifications enabled
+              </p>
             </div>
           </div>
         </div>
