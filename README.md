@@ -18,6 +18,7 @@ A modern, responsive web application built with React.js (JSX) and Node.js, feat
 ## Tech Stack
 
 ### Frontend
+
 - React.js (JSX)
 - React Router DOM
 - Tailwind CSS
@@ -25,6 +26,7 @@ A modern, responsive web application built with React.js (JSX) and Node.js, feat
 - Context API for state management
 
 ### Backend
+
 - Node.js
 - Express.js
 - MongoDB with Mongoose
@@ -35,6 +37,7 @@ A modern, responsive web application built with React.js (JSX) and Node.js, feat
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - MongoDB (local or cloud instance)
 - npm or yarn
@@ -42,11 +45,13 @@ A modern, responsive web application built with React.js (JSX) and Node.js, feat
 ### Frontend Setup
 
 1. Install dependencies:
+
 ```bash
 npm install
 ```
 
 2. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -56,21 +61,25 @@ The frontend will run on `http://localhost:5173`
 ### Backend Setup
 
 1. Navigate to the server directory:
+
 ```bash
 cd server
 ```
 
 2. Install backend dependencies:
+
 ```bash
 npm install
 ```
 
 3. Create environment file:
+
 ```bash
 cp .env.example .env
 ```
 
 4. Update the `.env` file with your MongoDB connection string and JWT secret:
+
 ```env
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/clustify-agent
@@ -78,25 +87,29 @@ JWT_SECRET=your-super-secret-jwt-key-here
 ```
 
 5. Create uploads directory:
+
 ```bash
 mkdir uploads
 ```
 
 6. Start the backend server:
+
 ```bash
 npm run dev
 ```
 
-The backend will run on `http://localhost:5000`
+The backend will run on `https://clustifyagent-backend.onrender.com`
 
 ## MongoDB Setup
 
 ### Local MongoDB
+
 1. Install MongoDB Community Edition
 2. Start MongoDB service
 3. The app will connect to `mongodb://localhost:27017/clustify-agent`
 
 ### MongoDB Atlas (Cloud)
+
 1. Create a MongoDB Atlas account
 2. Create a new cluster
 3. Get your connection string
@@ -105,22 +118,27 @@ The backend will run on `http://localhost:5000`
 ## API Endpoints
 
 ### Authentication
+
 - `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - Login user
 
 ### User
+
 - `GET /api/user/profile` - Get user profile (protected)
 
 ### Prompts
+
 - `POST /api/prompts` - Submit prompt with files (protected)
 - `GET /api/prompts` - Get user's prompts (protected)
 
 ### Health Check
+
 - `GET /api/health` - Server health check
 
 ## Demo Account
 
 For testing purposes, use these credentials:
+
 - **Email:** demo@clustify.com
 - **Password:** demo123
 
@@ -150,6 +168,7 @@ For testing purposes, use these credentials:
 ## Features Implemented
 
 ### Frontend (JSX)
+
 - ✅ Modern React components using JSX
 - ✅ Context API for theme and authentication
 - ✅ Responsive design with Tailwind CSS
@@ -159,6 +178,7 @@ For testing purposes, use these credentials:
 - ✅ Form validation and error handling
 
 ### Backend (Node.js)
+
 - ✅ Express.js REST API
 - ✅ MongoDB integration with Mongoose
 - ✅ JWT authentication
@@ -170,10 +190,13 @@ For testing purposes, use these credentials:
 ## Deployment
 
 ### Frontend Deployment
+
 The frontend is configured for deployment on platforms like Netlify, Vercel, or any static hosting service.
 
 ### Backend Deployment
+
 The backend can be deployed on platforms like:
+
 - Heroku
 - Railway
 - DigitalOcean App Platform

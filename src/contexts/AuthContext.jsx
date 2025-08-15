@@ -3,6 +3,8 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
+const hostURL = "https://clustifyagent-backend.onrender.com";
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
@@ -40,7 +42,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setIsLoading(true);
 
-      const resp = await axios.post("http://localhost:5000/api/auth/login", {
+      const resp = await axios.post(`${hostURL}/api/auth/login`, {
         email,
         password,
       });
@@ -78,7 +80,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setIsLoading(true);
 
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
+      const res = await axios.post(`${hostURL}/api/auth/register`, {
         name,
         email,
         password,
