@@ -30,7 +30,6 @@ const Home = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!prompt.trim()) return;
 
     setIsProcessing(true);
@@ -39,6 +38,7 @@ const Home = () => {
     const userInputs = new FormData();
     userInputs.append("file", files);
     userInputs.append("prompt", prompt);
+    userInputs.append("sessionId", user.email);
 
     try {
       const resp = await axios.post(
