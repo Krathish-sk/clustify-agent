@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useTheme } from '../contexts/ThemeContext';
-import { useAuth } from '../contexts/AuthContext';
-import { Moon, Sun, LogOut, Zap } from 'lucide-react';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "../contexts/ThemeContext";
+import { useAuth } from "../contexts/AuthContext";
+import { Moon, Sun, LogOut, Zap } from "lucide-react";
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
@@ -31,9 +31,9 @@ const Header = () => {
                   <Link
                     to="/"
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                      isActive('/') 
-                        ? 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20' 
-                        : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'
+                      isActive("/")
+                        ? "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20"
+                        : "text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
                     }`}
                   >
                     Home
@@ -41,9 +41,9 @@ const Header = () => {
                   <Link
                     to="/profile"
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                      isActive('/profile') 
-                        ? 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20' 
-                        : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'
+                      isActive("/profile")
+                        ? "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20"
+                        : "text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
                     }`}
                   >
                     Profile
@@ -62,13 +62,23 @@ const Header = () => {
               <nav className="flex space-x-4">
                 <Link
                   to="/login"
-                  className="px-4 py-2 text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
+                  //className="px-4 py-2 text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    isActive("/login")
+                      ? "px-4 py-2 text-sm font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20 rounded-lg hover:bg-purple-700 transition-colors"
+                      : "text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                  }`}
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="px-4 py-2 text-sm font-medium bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                  //className="px-4 py-2 text-sm font-medium bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    isActive("/register")
+                      ? "px-4 py-2 text-sm font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20 rounded-lg hover:bg-purple-700 transition-colors"
+                      : "text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                  }`}
                 >
                   Register
                 </Link>
@@ -81,7 +91,11 @@ const Header = () => {
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               aria-label="Toggle theme"
             >
-              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+              {theme === "light" ? (
+                <Moon className="w-5 h-5" />
+              ) : (
+                <Sun className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
