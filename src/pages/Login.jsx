@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { LogIn, Mail, Lock, Eye, EyeOff, Zap } from "lucide-react";
+import LoginRegiHeader from "../components/LoginRegiHeader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,19 +29,10 @@ const Login = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900/20 flex items-center justify-center px-4 transition-all duration-500">
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
-        <div className="text-center animate-fade-in">
-          <div className="flex items-center justify-center mb-6">
-            <div className="p-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl">
-              <Zap className="w-12 h-12 text-white" />
-            </div>
-          </div>
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Welcome
-          </h2>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
-            Sign in to your Clustify Agent account
-          </p>
-        </div>
+        <LoginRegiHeader
+          heading={"Welcome"}
+          title={"Sign in to your Clustify Agent account"}
+        />
 
         {/* Login Form */}
         <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-8 animate-slide-up">
