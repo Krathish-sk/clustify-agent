@@ -68,8 +68,6 @@ export const AuthProvider = ({ children }) => {
         "Something went wrong during login.";
 
       // Optionally show in UI (toast, alert, or state)
-      alert(message); // For quick debugging
-
       return false;
     } finally {
       setIsLoading(false);
